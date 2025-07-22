@@ -5,12 +5,12 @@ using namespace std;
 int main() {
     system("g++ problem_maker.cpp -o problem_maker");                  // Compila o arquivo problem_maker.cpp
     system("g++ problem_solver.cpp -o problem_solver");                // Compila o arquivo problem_solver.cpp
-    system("clear");                                                   // Limpa a tela antes de executar o programa
+    // system("clear");                                                   // Limpa a tela antes de executar o programa
 
     int escolha;
 
     do{
-        system("clear");  // Limpa a tela antes de exibir o menu
+        // system("clear");  // Limpa a tela antes de exibir o menu
         cout << "\n===== CODE JUDGE =====" << endl;
         cout << "\nChoose an Interface: " << endl;
         cout << "0. Exit" << endl;
