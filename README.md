@@ -58,4 +58,4 @@ Make sure to have gcc, g++, the JDK, and python3 installed to run user-submitted
 ## Contact
 
 - For any inquiries, please reach out to the repository owner via GitHub.
-```
+
