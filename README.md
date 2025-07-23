@@ -1,4 +1,4 @@
-```markdown
+
 # Code Judge
 
 ## Project Overview
