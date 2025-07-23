@@ -8,6 +8,7 @@ typedef long long ll;
 typedef unsigned long long llu;
 
 int Menu() {
+    system("clear");
     int choice;
     cout << "\n===== PROBLEM MAKER INTERFACE =====" << endl;
     cout << "0. Return" << endl;
@@ -21,6 +22,8 @@ int Menu() {
 
 ProblemSolver PS;
 void process(int choice){
+    
+    system("clear");
     switch(choice) {
         case 1:
             PS.listProblems();
@@ -32,10 +35,10 @@ void process(int choice){
             cout << "Invalid option. Please try again." << endl;
     }
 
-    cout << "\n\nPress Enter to continue...";
-    cin.ignore();
+    fflush(stdout);
+    cout << "\n\nPress Enter to continue..." << endl;
+    cin.ignore(); // Clear the newline character from the input buffer
     cin.get();
-    system("clear");
 }
 
 int main(){ 

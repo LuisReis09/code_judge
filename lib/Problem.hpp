@@ -25,8 +25,8 @@
         system(command.c_str());
 
         // Then, create a file name "config.txt" inside the problem directory and write the time limit and memory limit
-        command = "echo \"TL = " + to_string(problem.time_limit) + "\n" + 
-                    "ML = " + to_string(problem.memory_limit) + "\" > problems/" + problem.name + "/config.txt";
+        command = "echo \"TL = " + to_string(problem.time_limit) + "\" > problems/" + problem.name + "/config.txt";
+        command += " && echo \"ML = " + to_string(problem.memory_limit + 200) + "\" >> problems/" + problem.name + "/config.txt"; // Adding 200 MB to the memory limit to avoid issues with the system
 
         system(command.c_str());
 

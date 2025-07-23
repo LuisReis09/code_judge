@@ -148,11 +148,8 @@
 
             void viewProblems() {
                 // List all problems in the "problems" directory
-                int quantity = system("ls -l problems | grep ^d | wc -l");
-                if (quantity == 0) {
-                    cout << "No problems available." << endl;
-                    return;
-                }
+                
+
                 cout << "Listing all problems..." << endl;
                 system("ls -1 problems");
 

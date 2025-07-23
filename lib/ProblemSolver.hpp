@@ -81,7 +81,9 @@
                     getline(cin, pathname);
                     executeSolutionByFile(problem, pathname, static_cast<Language>(language));
                 } else if (option == 2) {
-                    cout << "Enter the input data (end with Ctrl+D):" << endl;
+                    cout << "\nEnter the input data (end with Ctrl+D)" << endl 
+                        << "(Remember to add \"\\n\" at the end of each line.)" << endl 
+                        << "(If you are are coding in Java, you must use \"Solution\" as the class name.)" << "\n\n" << "Your code: " << endl;
                     string line;
                     while (getline(cin, line)) {
                         input_data += line + "\n";
@@ -150,7 +152,7 @@
 
                         // Limita tempo
                         struct rlimit time_limit;
-                        time_limit.rlim_cur = getTimeLimit(problem);
+                        time_limit.rlim_cur = getTimeLimit(problem) + 2;
                         time_limit.rlim_max = time_limit.rlim_cur;
                         setrlimit(RLIMIT_CPU, &time_limit);
 
@@ -166,11 +168,12 @@
                         else if (language == CPP)
                             execl("./solution_cpp", "./solution_cpp", NULL);
                         else if (language == PYTHON)
-                            execlp("python3", "python3", pathname.c_str(), NULL);
+                            execlp("python3", "python3", "-u", pathname.c_str(), NULL);
                         else if (language == JAVA) {
                             string class_name = pathname.substr(pathname.find_last_of('/') + 1);
                             class_name = class_name.substr(0, class_name.find_last_of('.'));
-                            execlp("java", "java", class_name.c_str(), NULL);
+                            setenv("LD_LIBRARY_PATH", "/usr/lib/jvm/java-21-openjdk-amd64/lib", 1);
+                            execlp("java", "java", "-Xmx400m", class_name.c_str(),NULL);
                         }
 
                         // Se chegou aqui, falhou
@@ -223,7 +226,7 @@
                         extension = ".java";
                         break;
                 }
-                string temp_input_file = "temp_input" + extension;
+                string temp_input_file = "Solution" + extension;
                 ofstream temp_file(temp_input_file);
                 if (!temp_file.is_open()) {
                     cerr << "Error: Unable to create temporary input file." << endl;
@@ -251,6 +254,13 @@
                 string problem_name;
                 cout << "Enter problem name: ";
                 cin >> problem_name;
+
+                // Verifica se existe uma pasta com o nome do problema
+                ifstream problem_dir("problems/" + problem_name);
+                if (!problem_dir.is_open()) {
+                    cerr << "Problem not found: " << problem_name << endl;
+                    return;
+                }
 
                 Problem to_view = readProblem(problem_name);
                 cout << "\nProblem Name: " << to_view.name << endl;

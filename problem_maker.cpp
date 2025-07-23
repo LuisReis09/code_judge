@@ -38,8 +38,8 @@ void process(int choice){
             cout << "Invalid option. Please try again." << endl;
     }
 
+    fflush(stdout); 
     cout << "\n\nPress Enter to continue...";
-    cin.ignore();
     cin.get();
     system("clear");
 }
