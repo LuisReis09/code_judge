@@ -10,7 +10,7 @@ typedef unsigned long long llu;
 int Menu() {
     system("clear");
     int choice;
-    cout << "\n===== PROBLEM MAKER INTERFACE =====" << endl;
+    cout << "\n===== PROBLEM SOLVER INTERFACE =====" << endl;
     cout << "0. Return" << endl;
     cout << "1. List Problems" << endl;
     cout << "2. View/Solve a Problem" << endl;
